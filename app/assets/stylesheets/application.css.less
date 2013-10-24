@@ -1,0 +1,294 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@font-face {
+  font-family: 'Abel';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Abel'), local('Abel-Regular'), url(https://themes.googleusercontent.com/static/fonts/abel/v3/EAqh528fFdbUek8UOky4sA.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(https://themes.googleusercontent.com/static/fonts/opensans/v6/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url(https://themes.googleusercontent.com/static/fonts/opensans/v6/MTP_ySUJH_bn48VBG8sNSnhCUOGz7vYGh680lGh-uXM.woff) format('woff');
+}
+
+.clear {
+	clear: both;
+	height: 0;
+	margin: 0;
+	padding: 0;
+}
+.left { float: left; }
+.right { float: right; }
+.btn-small { margin-bottom: 3px; }
+h1, h2, h3 { font-family: "Open Sans", Arial, sans-serif; }
+h3 { font-size: 17px !important; font-weight: normal; }
+.well { background: #F7F7F7; }
+hr { border-top: 1px solid #DDDADA; }
+body, a { font-family: "Open Sans", serif; }
+
+body {
+	background-image: url("bg_body.png");
+	padding-top: 90px;
+	#body_mask {
+		background: rgba(255, 255, 255, 0.7);
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		z-index: 9999;
+	}
+	.navbar, .navbar-inner {
+		background: #272727;
+		border: 0;
+		border-bottom: solid 1px #363636;
+		.container {
+			margin: 20px auto;
+		}
+		input#request {
+			padding: 3px 6px;
+		}
+		h2 {
+			font-size: 25px !important;
+			line-height: 25px !important;
+			margin-top: 0 !important;
+		}
+		ul.pull-right > li > a {
+			&:hover, &:focus {
+				color: #1684c2;
+				background-color: transparent;
+			};
+		}
+	}
+	.display_settings.active {
+		color: #0197d6;
+	}
+	#settings_dropdown li.content {
+		display: block;
+		padding: 3px 20px;
+		clear: both;
+		font-weight: normal;
+		line-height: 20px;
+		color: #333;
+		white-space: nowrap;
+		&.page a.btn {
+			color: #fff;
+			display: inline;
+			padding: 2px 12px;	
+		}
+	}
+	div#homepage_background {
+		background: url('bg_worldmap.png') no-repeat 50% 50%;
+		background-size: contain;
+		overflow: hidden;
+		position: relative;
+		width: 100%;
+		div#homepage {
+			//background: rgba(0,0,0,0.7);
+			display: block;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			h1 {
+				color: #FFF;
+				display: block;
+				margin-top: 18%;
+				text-align: center;
+				width: 100%;
+			}
+			.bubble {
+				display: inline-block;
+				height: 100px;
+				position: absolute;
+				width: 100px;
+				&:hover {
+					img {
+						border-color: rgba(22, 132, 194, 0.9);
+					}
+					a .marker .triangle {
+						color: rgba(22, 132, 194, 0.9);
+					}
+				}
+				a {
+					border-radius: 66px;
+					display: block;
+					position: absolute;
+					.marker {
+						border-radius: 66px;
+						height: 116px;
+						position: relative;
+						transform: rotate(0deg); 
+						width: 116px;
+						z-index: 2;
+						.triangle {
+							color: rgba(255, 255, 255, 0.9);
+							font-size: 18px;
+							left: 50px;
+							position: absolute;
+							text-shadow: 1px -3px 5px #A7A3A3;
+							top: -16px;
+						}
+					}
+				}
+				img {
+					background-clip: padding-box;
+					border: 8px solid;
+					border-color: rgba(255, 255, 255, 0.2);
+					border-radius: 66px;
+					box-shadow: 0 0 7px #444;
+					height: 100px;
+					position: absolute;
+					width: 100px;
+					z-index: 1;
+				}
+				.details {
+					margin-left: 30px;
+					position: fixed;
+					width: 125px;
+				}
+				.date {
+					position: absolute;
+					display: block;
+					width: 100%;
+				}
+			}
+		}
+	}
+	div#avatars_container {
+		display: block;
+		height: 90px;
+		overflow: hidden;
+		width:100%;
+		ul#list_avatars_container {
+			display: block;
+			height: 90px;
+			margin: 0;
+			li {
+				display: inline-block;
+				list-style-type: none;
+				&:hover {
+					cursor: pointer;
+				};
+				.avatar_mask {
+					background: rgba(0,0,0,0.8);
+					color: #c8c8c8;
+					height: 80px;
+					padding-top: 10px;
+					position: absolute;
+					text-align: center;
+					width: 90px;
+					word-wrap: break-word;
+				}
+				img {
+					height: 90px;
+					width:90px;	
+				}
+			}
+		}
+	}
+	#main {
+		min-height: 400px;
+		position: relative;
+		top: 0;
+		z-index: 1000;
+	}
+	footer {
+		background: #fff;
+		border-top: 1px solid #BBB;
+		display: block;
+		left: 0;
+		position: absolute;
+		width: 100%;
+		a {
+			color: #BBB;
+		}
+		div#credits {
+			color: #BBB;
+			margin-left: 20px;
+			margin-right: 20px;
+			padding: 15px 0;
+			div#credits_container {
+				p, ul {
+					margin-bottom: 0;
+				}
+				ul.credits_links li {
+					display: inline-block;
+					list-style-type: none;
+					margin: 0px 5px;
+					&:first-child {
+						margin-left: 0;
+					}
+					&:last-child {
+						margin-right: 0;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 980px) {
+	body {
+		padding-top: 0;
+		#main {
+			width: 100%;	
+		}
+		#settings_dropdown li.content {
+			color: #fff;
+		}
+		.ui-slider .ui-slider-handle {
+			height: 0.2em;
+			width: 0.2em;
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	body #main div#content ul.feeds_list li .feed_infos {
+		margin: 0;
+		text-align: center;
+		div.feed_thumbnail, p.post_metas_cont { 
+			float: none;
+		}
+		p.feed_tags_cont {
+			margin-left: 0;	
+		}
+		.description_cont {
+			float: none;
+			margin-left: 0;
+			margin-top: 10px;
+		}
+	}
+	.white-popup {
+		max-width: none;
+		padding: 5px;
+	}
+	footer {
+		width: auto !important;
+		.container {
+			width: 100% !important;	
+		}
+	}
+}

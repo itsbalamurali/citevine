@@ -1,0 +1,30 @@
+<%= render :partial => "partials/single_page_sidebar", :locals => {:active => "contact"} %>
+<h2>Contact</h2>
+<hr class="single_page span7"/>
+<p class="single_page span7">
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse.
+</p>
+<div class="single_page left contact_content">
+	<h3>Direct message</h3>
+	<% if flash[:alert] %>
+		<div class="alert alert-error">
+        	<strong>Error:</strong> <%= flash[:alert] %>
+      	</div>
+	<% end %>
+	<% if notice %>
+		<div class="alert alert-success">
+        	<%= notice %>
+      	</div>
+	<% end %>
+	<%= form_for @message, :url => contact_send_path, method: "post", id: "contact_form" do |form| %>
+	  <%= form.label :email, "Email" %>
+	  <%= form.text_field :email %>
+	  <%= form.submit "Send!", :class => 'btn btn-success' %>
+	  <%= form.label :body, "Message" %>
+	  <%= form.text_area :body %>
+	<% end %>
+</div>
+<div class="clear"></div>

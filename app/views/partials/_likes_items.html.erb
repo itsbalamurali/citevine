@@ -1,0 +1,23 @@
+<% metas["data"]["records"].each.with_index do |like, index| %>
+	<li class="left well">
+		<%= link_to user_path(:user => like["userId"], :username => like["username"]) do %>
+			<span><%= like["username"] %></span>
+			<%= image_tag "#{like["avatarUrl"]}", {alt:like["username"], :height => 90, :width => 90} %>
+		<% end %>
+	</li>
+<% end %>
+<li class="clear"></li>
+<li class="left previous_page">
+	<% if metas['data']['previousPage'] != nil %>
+		<%= link_to metas_more_path(:post => params[:post], :page => metas['data']['previousPage']), :class => 'right btn btn-primary' do %>
+			<i class="icon-caret-left"></i>&nbsp;&nbsp;&nbsp;Previous page
+		<% end %>
+	<% end %>
+</li>
+<li class="right next_page">
+	<% if metas['data']['nextPage'] != nil %>
+		<%= link_to metas_more_path(:post => params[:post], :page => metas['data']['nextPage']), :class => 'right btn btn-primary' do %>
+			Next page&nbsp;&nbsp;&nbsp;<i class="icon-caret-right"></i>
+		<% end %>
+	<% end %>
+</li>

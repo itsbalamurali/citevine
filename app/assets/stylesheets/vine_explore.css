@@ -1,0 +1,90 @@
+#trending_channels a.channel1 {
+	font-color: #ffffff;
+	background: #ef5282 url(//d3422saexnbpnl.cloudfront.net/static/images/channels/Comedy.svg) 0px center no-repeat;
+	background-size: 72px auto;
+}
+
+#trending_channels a.channel2 {
+	font-color: #ffffff;
+	background: #ffba4d url(//d3422saexnbpnl.cloudfront.net/static/images/channels/ArtAndExperimental.svg) 0px center no-repeat;
+	background-size: 72px auto;
+}
+
+#trending_channels a.channel3 {
+	font-color: #ffffff;
+	background: #4681cf url(//d3422saexnbpnl.cloudfront.net/static/images/channels/Cats.svg) 0px center no-repeat;
+	background-size: 72px auto;
+}
+
+#trending_channels a.channel4 {
+	font-color: #ffffff;
+	background: #7859b0 url(//d3422saexnbpnl.cloudfront.net/static/images/channels/Dogs.svg) 0px center no-repeat;
+	background-size: 72px auto;
+}
+
+#trending_channels a.channel7 {
+	font-color: #ffffff;
+	background: #8db7c9 url(//d3422saexnbpnl.cloudfront.net/static/images/channels/Family.svg) 0px center no-repeat;
+	background-size: 72px auto;
+}
+
+#trending_channels a.channel12 {
+	font-color: #ffffff;
+	background: #ff98a7 url(//d3422saexnbpnl.cloudfront.net/static/images/channels/BeautyAndFashion.svg) 0px center no-repeat;
+	background-size: 72px auto;
+}
+
+#trending_channels a.channel10 {
+	font-color: #ffffff;
+	background: #f84e5d url(//d3422saexnbpnl.cloudfront.net/static/images/channels/Food.svg) 0px center no-repeat;
+	background-size: 72px auto;
+}
+
+#trending_channels a.channel13 {
+	font-color: #ffffff;
+	background: #6ec4e8 url(//d3422saexnbpnl.cloudfront.net/static/images/channels/HealthAndFitness.svg) 0px center no-repeat;
+	background-size: 72px auto;
+}
+
+#trending_channels a.channel5 {
+	font-color: #ffffff;
+	background: #ff6f49 url(//d3422saexnbpnl.cloudfront.net/static/images/channels/Nature.svg) 0px center no-repeat;
+	background-size: 72px auto;
+}
+
+#trending_channels a.channel11 {
+	font-color: #ffffff;
+	background: #54c5b4 url(//d3422saexnbpnl.cloudfront.net/static/images/channels/Music.svg) 0px center no-repeat;
+	background-size: 72px auto;
+}
+
+#trending_channels a.channel14 {
+	font-color: #ffffff;
+	background: #ff9951 url(//d3422saexnbpnl.cloudfront.net/static/images/channels/NewsAndPolitics.svg) 0px center no-repeat;
+	background-size: 72px auto;
+}
+
+#trending_channels a.channel8 {
+	font-color: #ffffff;
+	background: #535f8b url(//d3422saexnbpnl.cloudfront.net/static/images/channels/SpecialFX.svg) 0px center no-repeat;
+	background-size: 72px auto;
+}
+
+#trending_channels a.channel9 {
+	font-color: #ffffff;
+	background: #5cb65e url(//d3422saexnbpnl.cloudfront.net/static/images/channels/Sports.svg) 0px center no-repeat;
+	background-size: 72px auto;
+}
+
+#trending_channels a.channel6 {
+	font-color: #ffffff;
+	background: #d356b1 url(//d3422saexnbpnl.cloudfront.net/static/images/channels/Urban.svg) 0px center no-repeat;
+	background-size: 72px auto;
+}
+
+#trending_channels a.channel15 {
+	font-color: #ffffff;
+	background: #FFF url(//d3422saexnbpnl.cloudfront.net/static/images/channels/wierdBanner@2x.png) left no-repeat;
+	background-size: 100% 100%;
+	border: none;
+}

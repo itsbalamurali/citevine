@@ -1,0 +1,37 @@
+<% if params[:subtype] %>
+	<div id="channels_tabs">
+		<ul class="nav nav-tabs">
+			<% active_class = params[:subtype] == "recent" ? 'active' : '' %>
+	        <li class="<%= active_class %>">
+	        	<%= link_to "Recent", list_path(:type => :channels, :id => params[:id], :subtype => "recent") %>
+	        </li>
+			<% active_class = params[:subtype] == "popular" ? 'active' : '' %>
+	        <li class="<%= active_class %>">
+	        	<%= link_to "Popular", list_path(:type => :channels, :id => params[:id], :subtype => "popular") %>
+	        </li>
+      	</ul>
+	</div>
+<% end %>
+<% if @feeds["success"] != false && @feeds["data"]["records"].count > 0 %>
+	<% if(session[:autoload] == '0') %>
+		<%= render :partial => "partials/pagination", :locals => { :previous_page => @feeds["data"]["previousPage"], :next_page => @feeds["data"]["nextPage"] } %>
+		<hr/>
+	<% end %>
+	<ul class="feeds_list">
+		<% if @feeds["success"] != false %>
+			<%= render :partial => 'partials/feed_items', :locals => {:feeds => @feeds} %>
+		<% else %>
+			<%= render :partial => "partials/error" %>
+		<% end %>
+	</ul>
+	<% if(session[:autoload] == '0') %>
+		<hr/>
+		<%= render :partial => "partials/pagination", :locals => { :previous_page => @feeds["data"]["previousPage"], :next_page => @feeds["data"]["nextPage"] } %>
+	<% else %>
+		<script type="text/javascript">
+			var next_page = <%= @feeds["data"]["nextPage"] %>;
+		</script>
+	<% end %>
+<% else %>
+	No vines found
+<% end %>

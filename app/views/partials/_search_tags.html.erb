@@ -1,0 +1,4 @@
+<% tags["data"]["records"].each.with_index do |tag, index| %>
+	<% active = params[:request] == tag["tag"].downcase ? 'current' : ''; %>
+	<%= link_to tag["tag"], tag_path(:tag => tag["tag"]), :class => 'tag btn btn-small '+active %>
+<% end %>

@@ -1,0 +1,74 @@
+.user {
+	.user_resume {
+		margin: 30px 0 0 0px !important;
+		text-align: center;
+		.user_picture {
+			display: block;
+			margin: auto;
+			position: relative;
+			width: 200px;
+			&:before {
+				box-shadow: inset 0px 0px 3px 1px rgba(0,0,0,0.2);
+				display:block;
+			    content:'';
+			    height: 100%;
+			    position:absolute;
+			    width: 100%;
+			}
+			img {
+				display: block;
+			}
+		}
+		.description_cont {
+			margin: 20px auto 0 auto;
+			width: 100%;
+		}
+	}
+}
+
+.fullsize-form {
+	margin-top: 40px;
+	input {
+		width: 92%;
+	}
+	button {
+		vertical-align: top;
+	}
+}
+.search_more_content {
+	display: block;
+}
+#search_results_tags .loader, .feeds_list.search .loader {
+	background: rgba(255,255,255,0.5);
+	position: absolute;
+	width: 100%;
+	z-index: 9999;
+}
+.search {
+	li.well {
+		height: 100px;
+		margin-right: 16px;
+		width: 100px;
+		&.current {
+			background: #878A8C;
+		}
+		a {
+			color: white;
+			display: block;
+			height: 100px;
+			width: 100px;
+			img {
+				height: 100px !important;
+				width: 100px !important;
+			}
+			span {
+				background: rgba(0,0,0,0.8);
+				display: block;
+				text-align: center;
+				padding: 10px 3px;
+				position: absolute;
+				width: 94px;
+			}	
+		}
+	}
+}

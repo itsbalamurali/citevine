@@ -1,0 +1,89 @@
+<% feeds["data"]["records"].each.with_index do |feed, index| %>
+	<li>
+		<div class="well user_infos">
+			<%= image_tag "#{feed["avatarUrl"]}", {alt:feed["username"], :height => 30, :width => 30} %>
+			<%= link_to feed["username"], user_path(:user => feed["userId"], :username => feed["username"]), :class => "username" %>
+			<a href="https://twitter.com/share" class="twitter-share-button" data-url="<%= feed["shareUrl"] %>" data-via="" data-lang="en" data-text="<%= feed["username"] %>'s post on Vine" data-related="" data-count="horizontal">Tweet</a>
+		</div>
+		<div class="feed_infos">
+			<div class="feed_thumbnail left">
+				<% if feed["postId"] %>
+					<%= link_to "#video_cont_"+feed["postId"].to_s, :class => 'open-video-popup' do %>
+						<%= image_tag "#{feed["thumbnailUrl"]}", {alt:feed["postId"], :height => 110, :width => 110} %>
+					<% end %>
+				<% end %>
+			</div>
+			<div class="description_cont left span10">
+				<% if check_description_exists(feed["description"]) %>
+					<h2>
+						<%= link_to feed["description"], "#video_cont_"+feed["postId"].to_s, :class => 'open-video-popup-alt' %>
+					</h2>
+				<% end %>
+				<p>
+					<% if check_from_exists(feed["location"]) %>
+						<i>from <%= feed["location"] %>,</i>
+					<% end %>
+					<i><%= format_date(feed["created"]) %> ago</i>
+				</p>
+			</div>
+			<div class="clear"></div>
+			<div class="feed_metas">
+				<p class="post_metas_cont left">
+					<% if feed["comments"] %>
+						<span class="post_metas">
+							<% if feed["comments"]["count"] != 0 %>
+								<%= link_to metas_path(:type => 'comments', :post => feed["postId"]), :class => 'open-metas-popup' do %>
+									<strong><%= format_large_number(feed["comments"]["count"]) %></strong> <i class="icon-comments-alt"></i>
+								<% end %>
+							<% else %>
+								<strong><%= format_large_number(feed["comments"]["count"]) %></strong> <i class="icon-comments-alt"></i>
+							<% end %>
+						</span>
+					<% end %>
+					<% if feed["likes"] %>
+						<span class="post_metas">
+							<% if feed["comments"]["likes"] != 0 %>
+								<%= link_to metas_path(:type => 'likes', :post => feed["postId"]), :class => 'open-metas-popup' do %>
+									<strong><%= format_large_number(feed["likes"]["count"]) %></strong> <i class="icon-heart-empty"></i>
+								<% end %>
+							<% else %>
+								<strong><%= format_large_number(feed["likes"]["count"]) %></strong> <i class="icon-heart-empty"></i>
+							<% end %>
+						</span>
+					<% end %>
+				</p>
+				<p class="feed_tags_cont left span10">
+					<% if feed["tags"].count > 0 %>
+						<% feed["tags"].each.with_index do |tag, index| %>
+							<% active = params[:tag] && params[:tag] == tag["tag"] ? 'current' : '' %>
+							<%= link_to tag["tag"], tag_path(:tag => tag["tag"]), :class => "tag btn btn-small "+ active %>
+						<% end %>
+					<% end %>
+				</p>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div id="video_cont_<%= feed["postId"] %>" class="video_cont white-popup mfp-hide">
+			<h2>
+				<%= auto_tag_vine(feed["description"]).html_safe %>			
+			</h2>
+			<p>
+				<% if check_from_exists(feed["location"]) %>
+					<i>from <%= feed["location"] %>,</i>
+				<% end %>
+				<i><%= format_date(feed["created"]) %> ago</i>
+			</p>
+			<% volume_class = session[:volume] == '0' ? 'off' : 'on' %>
+			<a href="#" class="mute-button <%= volume_class %>"></a>
+			<video width="600" height="600" id="video_<%= feed["postId"] %>" class="video-js" poster="<%= feed["thumbnailUrl"] %>" loop="" preload="none" poster="">
+				<source src="<%= feed["videoUrl"] %>" type="video/mp4">
+			</video>
+			<div class="video_cont_infos">
+				<div class="well user_infos">
+					<%= image_tag "#{feed["avatarUrl"]}", {alt:feed["username"], :height => 30, :width => 30} %>
+					<%= link_to feed["username"], user_path(:user => feed["userId"], :username => feed["username"]), :class => "username" %>
+				</div>
+			</div>
+		</div>
+	</li>
+<% end %>

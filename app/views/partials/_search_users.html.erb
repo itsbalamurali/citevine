@@ -1,0 +1,9 @@
+<% users["data"]["records"].each.with_index do |user, index| %>
+	<% active = params[:request] == user["username"].downcase ? 'current' : ''; %>
+	<li class="left well <%= active %>">
+		<%= link_to user_path(:user => user["userId"], :username => user["username"]), :class => "username" do %>
+			<span><%= user["username"] %></span>
+			<%= image_tag "#{user["avatarUrl"]}", {alt:user["username"], :height => 100, :width => 100} %>
+		<% end %>
+	</li>
+<% end %>

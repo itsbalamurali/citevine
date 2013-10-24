@@ -1,0 +1,51 @@
+ul.likes_list {
+	margin: 0;
+	li {
+		list-style-type: none;
+	}
+	li.well {
+		display: block;
+		height: 90px;
+		list-style-type: none;
+		margin: 5px;
+		padding: 5px;
+		position: relative;
+		a {
+			color: #fff;
+			display: block;
+			height: 90px;
+			width: 90px;
+			&:hover {
+				opacity: 0.7;
+			}
+			span {
+				background: rgba(0, 0, 0, 0.8);
+				display: block;
+				text-align: center;
+				overflow: hidden;
+				padding: 10px 3px;
+				position: absolute;
+				width: 84px;
+			}
+			img {
+				height: 90px;
+				width: 90px;
+			}
+		}
+	}
+}
+.btn-primary {
+	margin: 20px 10px 0px 0px;
+}
+.white-popup .loader {
+	background: rgba(255,255,255,0.5);
+	display: none;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+.icon-chevron-left, .icon-chevron-right {
+	vertical-align: middle !important;
+}

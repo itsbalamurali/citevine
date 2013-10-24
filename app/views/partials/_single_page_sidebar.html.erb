@@ -1,0 +1,22 @@
+<ul id="contact_sidebar" class="right">
+	<% about_active_class = active == 'about' ? 'active' : ''; %>
+	<li class="<%= about_active_class %>">
+		<%= link_to about_path do %>
+			<i class="icon-chevron-right"></i>About
+		<% end %>
+	</li>
+	<hr/>
+	<% contact_active_class = active == 'contact' ? 'active' : ''; %>
+	<li class="<%= contact_active_class %>">
+		<%= link_to contact_path  do %>
+			<i class="icon-chevron-right"></i>Contact
+		<% end %>
+	</li>
+	<hr/>
+	<% whatsnew_active_class = active == 'whatsnew' ? 'active' : ''; %>
+	<li class="<%= whatsnew_active_class %>">
+		<%= link_to whatsnew_path  do %>
+			<i class="icon-chevron-right"></i>What's new?
+		<% end %>
+	</li>
+</ul>

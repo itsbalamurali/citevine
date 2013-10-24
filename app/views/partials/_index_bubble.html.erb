@@ -1,0 +1,8 @@
+<% @feed["data"]["records"].each.with_index do |feed, index| %>
+	<%= link_to user_path(:user => feed["userId"], :username => feed["username"]), :class => "username" do %>
+		<div class="marker">
+			<span class="triangle">▲</span>
+		</div>
+	<% end %>
+	<%= image_tag "#{feed["avatarUrl"]}", {alt:feed["username"], :height => 100, :width => 100} %>
+<% end %>

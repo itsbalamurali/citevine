@@ -1,0 +1,9 @@
+<div class="white-popup">
+	<% if @metas["success"] != false %>
+		<ul class="metas_list likes_list">
+			<%= render :partial => "partials/"+params[:type]+"_items", :locals => {:metas => @metas} %>	
+		</ul>
+	<% end %>
+	<div class="clear"></div>
+	<div class="loader"></div>
+</div>
