@@ -54,6 +54,8 @@ module Citivine
     # parameters by using an attr_accessible or attr_protected declaration.
     config.active_record.whitelist_attributes = true
 
+    config.assets.initialize_on_precompile = false
+
     # Enable the asset pipeline
     config.assets.enabled = true
 
@@ -103,16 +105,6 @@ module Citivine
 
     # Vine default items count per page
     config.vine_count_items_options = ["20", "50", "100", "200"]
-
-    config.action_mailer.smtp_settings = {
-      :address              => "smtp.gmail.com",
-      :port                 => 587,
-      :domain               => "citivine.com",
-      :user_name            => ENV["GMAIL_USERNAME"],
-      :password             => ENV["GMAIL_PASSWORD"],
-      :authentication       => "plain",
-      :enable_starttls_auto => true
-    }
 
   end
 end

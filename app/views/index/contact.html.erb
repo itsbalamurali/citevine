@@ -1,12 +1,7 @@
+<%= render :partial => "partials/metas", :locals => { :params => params } %>
 <%= render :partial => "partials/single_page_sidebar", :locals => {:active => "contact"} %>
 <h2>Contact</h2>
 <hr class="single_page span7"/>
-<p class="single_page span7">
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse.
-</p>
 <div class="single_page left contact_content">
 	<h3>Direct message</h3>
 	<% if flash[:alert] %>

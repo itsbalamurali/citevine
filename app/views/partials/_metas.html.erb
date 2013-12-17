@@ -1,0 +1,49 @@
+<% 
+
+	prepare_title = ""
+	prepare_description = "";
+	prepare_keywords = "citivine, vine";
+
+	case params["action"]
+		when "list"
+			if params["type"]
+				case params["type"]
+				when "promoted"
+					prepare_title += "Promoted Vines"
+					prepare_keywords += ", promoted"
+				when "popular"
+					prepare_title += "Popular Vines"
+					prepare_keywords += ", popular"
+				when "channels"
+					prepare_title += "Channel "+params[:id]
+					prepare_keywords += ", channel"
+			end
+		end
+		when "post"
+			prepare_title += params[:username]+"'s post"
+			prepare_keywords += ", "+params[:username]
+		when "tag"
+			prepare_title += "Tag "+params[:tag]
+			prepare_keywords += ", tag, "+params[:tag]
+		when "user"
+			prepare_title += params["username"]+"'s Vines"
+			prepare_keywords += ", user, "+params["username"]
+		when "search"
+			prepare_title += "Search "+params["request"]
+			prepare_keywords += ", search, "+params["request"]
+		when "about"
+			prepare_title += "About"
+			prepare_keywords += ", about"
+		when "contact"
+			prepare_title += "Contact"
+			prepare_keywords += ", contact"
+		when "whatsnew"
+			prepare_title += "What's new"
+			prepare_keywords += ", whats new"
+	end
+
+	title prepare_title
+	description prepare_description
+	keywords prepare_keywords
+
+%>

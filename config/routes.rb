@@ -10,15 +10,15 @@ Citivine::Application.routes.draw do
 	  #Search
 	  match 'search(/:request)(/:type)(/:page)' => 'feeds#search', :as => :search
 	  #list feeds by tag id
-	  match 'tag/:tag(/page/:page)(/count/:size)' => 'tags#tag', :as => :tag
+	  match 'tag/:tag(/page/:page)(/load/:load)(/count/:size)' => 'feeds#tag', :as => :tag
 	  #fetch metas by post
 	  match 'post(/cat/:cat)(/:type)/:post' => 'feeds#metas', :as => :metas
 	  #fetch more metas by post
 	  match 'post(/cat/:cat)(/:type)/:post(/page/:page)' => 'feeds#metas_more', :as => :metas_more
 	  #uniq user
-	  match 'user/:user(/:username)(/page/:page)(/load/:load)' => 'users#user', :as => :user
-	  #uniq vine (video)
-	  match 'feeds/post' => 'feeds#post', :as => :post
+	  match 'user/:user(/:username)(/page/:page)(/load/:load)' => 'feeds#user', :as => :user
+	  #uniq vine uniq post / video
+	  match 'vine/:username/:post' => 'feeds#post', :as => :post
 	  #test route
 	  match 'test/test' => 'feeds#test', :as => :test
 	  #Set number of items per page

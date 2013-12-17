@@ -1,0 +1,79 @@
+<div id="video_cont" class="video_cont white-popup clearfix">
+	<% @post["data"]["records"].each.with_index do |post, index| %>
+		<div id="post_cont" class="left">
+			<h2>
+				<%= auto_tag_vine(post["description"]).html_safe %>	
+			</h2>
+			<p>
+				<% if check_from_exists(post["location"]) %>
+					<i>from <%= post["location"] %>,</i>
+				<% end %>
+				<i><%= format_date(post["created"]) %> ago</i>
+			</p>
+			<% volume_class = session[:volume] == '0' ? 'off' : 'on' %>
+			<a href="#" class="mute-button <%= volume_class %>"></a>
+			<video id="video_<%= post["postId"] %>" class="video-js" poster="<%= post["thumbnailUrl"] %>" loop="" preload="false">
+				<source src="<%= post["videoUrl"] %>" type="video/mp4">
+			</video>
+		</div>
+		<div id="metas_cont" class="left">
+			<div class="well user_infos clearfix">
+				<%= link_to user_path(:user => post["userId"], :username => post["username"]), :class => "username" do %>
+					<%= image_tag "#{post["avatarUrl"]}", {alt:post["username"], :height => 100, :width => 100, :class => "left user_avatar"} %>
+				<% end %>
+				<h3 class="left">
+					<%= link_to post["username"], user_path(:user => post["userId"], :username => post["username"]), :class => "username" %>
+				</h3>
+				<span class="left">
+					<%= @feeds["data"]["count"] %> vine<%= @feeds["data"]["count"] == 1 ? '' : 's' %>
+				</span>
+			</div>
+			<ul class="nav nav-tabs">
+				<li class="active share">
+					<%= link_to "Share", '' %>
+				</li>
+				<% if @comments["data"]["count"].to_i > 0 %>
+			        <li class="comments">
+			        	<%= link_to format_large_number(@comments["data"]["count"])+" Comments", '' %>
+			        </li>
+		        <% end %>
+		        <% if @likes["data"]["count"].to_i > 0 %>
+			        <li class="likes">
+			        	<%= link_to format_large_number(@likes["data"]["count"])+" Likes", '' %>
+			        </li>
+		        <% end %>
+	      	</ul>
+	      	<ul id="share" class="metas">
+	      		<a target="_blank" onclick="return !window.open(this.href, 'Twitter', 'width=700,height=400')" href="https://twitter.com/share?url=<%= post["shareUrl"] %>&amp;text=<%= post["description"] %>">
+	      			<i class="icon-share icon-twitter"></i>
+	    		</a>
+      			<a target="_blank" onclick="return !window.open(this.href, 'Facebook', 'width=700,height=400')" href="https://www.facebook.com/sharer/sharer.php?u=<%= post["shareUrl"] %>">
+	      			<i class="icon-share icon-facebook"></i>
+	    		</a>
+	      		<h3>Video URL:</h3>
+				<input value="<%= url_for(:only_path => false) %>" name="video-url">
+				<div id="tags">
+					<% if post["entities"].length > 0 %>
+						<h3>Tags:</h3>
+					<% end %>
+	    			<% post["entities"].each.with_index do |entity, index| %>
+						<% if entity["type"] == "tag" %>
+							<% active = params[:tag] && params[:tag] == entity["title"] ? 'current' : '' %>
+							<%= link_to entity["title"], tag_path(:tag => entity["title"]), :class => "tag btn btn-small "+ active %>
+						<% end %>
+					<% end %>
+				</div>
+			</ul>
+			<% if @comments["data"]["count"].to_i > 0 %>
+				<ul id="comments" class="metas">
+					<%= render :partial => 'partials/comments_items', :locals => {:metas => @comments, :post => params[:post]} %>
+				</ul>
+			<% end %>
+			<% if @likes["data"]["count"].to_i > 0 %>
+				<ul id="likes" class="metas clearfix likes_list">
+					<%= render :partial => 'partials/likes_items', :locals => {:metas => @likes, :post => params[:post]} %>
+				</ul>
+			<% end %>
+		</div>
+	<% end %>
+</div>

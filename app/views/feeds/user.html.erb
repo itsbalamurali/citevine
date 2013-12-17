@@ -1,0 +1,52 @@
+<%= render :partial => "partials/metas", :locals => { :params => params } %>
+<ul class="user feeds_list">
+	<li>
+		<div class="user_resume">
+			<div class="user_picture">
+				<%= image_tag "#{@user["avatarUrl"]}", {alt:@user["username"], :height => 200, :width => 200} %>
+			</div>
+			<div class="description_cont left">
+				<h2><%= @user["username"] %></h2>
+				<% if check_from_exists(@user["location"]) %>
+					<i>from <%= @user["location"] %></i></p>
+				<% end %>
+				<% if @user["description"] %>
+					<h4>
+						<%= auto_link_twitter(@user["description"]).html_safe %>
+					</h4>
+				<% end %>
+				<p>
+					<strong><%= format_large_number(@user["followerCount"]) %></strong> followers / 
+					<strong><%= format_large_number(@user["followingCount"]) %></strong> following
+				</p>
+				<p class="post_metas">
+					<strong><%= format_large_number(@user["likeCount"]) %></strong> <i class="icon-heart-empty"></i>
+				</p>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</li>
+</ul>
+<% if @feeds["success"] != false && @feeds["data"]["records"].count > 0 %>
+	<% if(session[:autoload] == '0') %>
+		<%= render :partial => "partials/pagination", :locals => { :previous_page => @feeds["data"]["previousPage"], :next_page => @feeds["data"]["nextPage"] } %>
+		<hr/>
+	<% end %>
+	<ul class="feeds_list">
+		<% if(@feeds["data"]["records"]) %>
+			<%= render :partial => 'partials/feed_items', :locals => {:feeds => @feeds} %>
+		<% else %>
+			<%= render :partial => "partials/error" %>
+		<% end %>
+	</ul>
+	<% if(session[:autoload] == '0') %>
+		<hr/>
+		<%= render :partial => "partials/pagination", :locals => { :previous_page => @feeds["data"]["previousPage"], :next_page => @feeds["data"]["nextPage"] } %>
+	<% else %>
+		<script type="text/javascript">
+			var next_page = <%= @feeds["data"]["nextPage"] %>;
+		</script>
+	<% end %>
+<% else %>
+	No vines found
+<% end %>

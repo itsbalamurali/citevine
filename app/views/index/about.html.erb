@@ -1,10 +1,11 @@
+<%= render :partial => "partials/metas", :locals => { :params => params } %>
 <%= render :partial => "partials/single_page_sidebar", :locals => {:active => "about"} %>
 <h2>About</h2>
 <hr class="single_page span7"/>
 <div class="single_page left about_content span7">
-	<p>Citivine. The source code is available on <%= link_to "GitHub", "http://khakimov.com/blog/2013/03/12/vines-undocumented-api/",:target => "blank" %>.</p>
+	<p>The source code is available on <%= link_to "GitHub", "//github.com/guillaumer/citivine",:target => "blank" %>.</p>
 	<h3>How it works?</h3>
-	<p>Citivine gathers all feeds in real-time from the (non official) Vine API, also used in the (offcial) iPhone and Android app. You may find some detailed informations on how the API works on various blogs and GitHub repos, such as:</p>
+	<p>Citivine gathers all feeds in real-time from the (non-official) Vine API, also used in the (offcial) iPhone and Android app. You may find some detailed informations on how the API works on various blogs and GitHub repos, such as:</p>
 	<ul>
 		<li><%= link_to "http://khakimov.com/blog/2013/03/12/vines-undocumented-api/", "http://khakimov.com/blog/2013/03/12/vines-undocumented-api/",:target => "blank" %></li>
 		<li><%= link_to "https://github.com/starlock/vino/wiki/API-Reference", "https://github.com/starlock/vino/wiki/API-Reference", :target => "blank" %></li>
@@ -13,16 +14,16 @@
 	<p>However, some of these infos are deprecated as Vine is rapidly evolving. In addition to the provided links, here is what I'm also using for pulling datas:</p>
 	<ul>
 		<li>
-			<%= link_to "https://vine.co/explore", "https://vine.co/explore", :target => "blank" %> and the newly added <%= link_to "https://vine.co/explore/v2", "https://vine.co/explore/v2", :target => "blank" %> are the webpages shown in the <i>Explore</i> section of the mobile app. I still have yet to find the URLs for getting the trending tags and the recently created channels type.
+			<%= link_to "https://vine.co/explore", "https://vine.co/explore", :target => "blank" %> and the newly added <%= link_to "https://vine.co/explore/v2", "https://vine.co/explore/v2", :target => "blank" %> are the webpages shown in the <i>Explore</i> section of the mobile app.
+		</li>
+		<li>
+			https://api.vineapp.com/timelines/posts/post_id is the endpoint for retrieving a single post (recently added, yay!).
 		</li>
 		<li>
 			<i>https://api.vineapp.com/posts/post_id/comments</i> and <i>https://api.vineapp.com/posts/post_id/likes</i> for respectively getting the comments and likes associated to a Vine video (post).
 		</li>
 		<li>
 			The <i>page</i> and <i>size</i> parameters can be appended to every API URLs, although I wouldn't advise setting the <i>size</i> too high for obvious load issues.
-		</li>
-		<li>
-			I couldn't find the URL for fetching post informations. I'm not even sure it exists according to the way the Vine app is displaying the feeds (push and pull to refresh, AJAX loading). If you have any information about this, please <%= link_to "contact me", contact_path() %> me!
 		</li>
 	</ul>
 	<h3>Disclaimer</h3>

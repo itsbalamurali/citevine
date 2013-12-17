@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<link rel="icon" type="image/png" href="<%= asset_path "favicon.png" %>" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Citivine</title>
+		<%= display_meta_tags :site => 'citivine.co' %>
 		<%= stylesheet_link_tag "application", :media => "all" %>
+		<%= javascript_include_tag "application" %>
+		<%= javascript_include_tag @controller %>
 		<%= csrf_meta_tags %>
 		<script type="text/javascript">
 		  var _gaq = _gaq || [];
 		  _gaq.push(['_setAccount', 'UA-45071392-2']);
 		  _gaq.push(['_setDomainName', 'citivine.co']);
 		  _gaq.push(['_trackPageview']);
-
 		  (function() {
 		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
 		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
@@ -19,6 +21,14 @@
 		</script>
 	</head>
 	<body>
+		<div id="fb-root"></div>
+		<script type="text/javascript">(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s); js.id = id;
+		  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&status=0";
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
 		<%= render :partial => "partials/nav" %>
 		<div id="main" class="container">
 			<div id="content">
@@ -26,7 +36,6 @@
 			</div>
 	 	</div>
 	 	<%= render :partial => "partials/footer" %>
-	 	<%= javascript_include_tag "application" %>
 		<script type="text/javascript">
 			!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 		</script>

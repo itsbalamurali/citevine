@@ -1,24 +1,20 @@
 <%= nav_bar :fixed => :top, :brand => "citivine.co", :responsive => true do %>
     <%= menu_group do %>
-        <%= menu_item "Home", root_path %>
         <%= menu_item "Popular", list_path(:type => :popular) %>
         <%= menu_item "Promoted", list_path(:type => :promoted) %>
         <%= drop_down "Channels" do %>
-            <% @channels.each.with_index do |channel, index| %>
-                <% proper_channel = channel.gsub("&", "And").gsub(" ", "") %>
-                <%= menu_item list_path(:type => :channels, :id => index+1, :subtype => "recent") do %>
-                    <% if index+1 != 15 %>
-                        <%= image_tag "//d3422saexnbpnl.cloudfront.net/static/images/channels/"+proper_channel+".svg", {alt:"", :height => 20, :width => 20} %> 
-                        <%= channel %>
-                    <% else %>
-                        <%= "Wierd!" %>
-                    <% end %>
+            <% @channels["data"]["records"].each.with_index do |channel, index| %>
+                <%= menu_item list_path(:type => :channels, :id => channel["channelId"], :subtype => "recent") do %>
+                    <%= image_tag "//d3422saexnbpnl.cloudfront.net"+channel["iconUrl"], {alt:"", :height => 20, :width => 20} %> 
+                    <%= channel["channel"] %>
                 <% end %>
             <% end %>
         <% end %>
         <%= drop_down "Tags" do %>
-            <% @trending_tags.each do |tag| %>
-                <%= menu_item tag, tag_path(:tag => tag.strip[1..tag.strip.length-1]) %>
+            <% @trending_tags["data"]["records"].each.with_index do |tag, index| %>
+                <% if index < 8 %>
+                    <%= menu_item "#"+tag["tag"], tag_path(:tag => tag["tag"]) %>
+                <% end %>
             <% end %>
         <% end %>
     <% end %>

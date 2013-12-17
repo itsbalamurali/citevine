@@ -6,18 +6,8 @@
 		<% end %>
 	</li>
 <% end %>
-<li class="clear"></li>
-<li class="left previous_page">
-	<% if metas['data']['previousPage'] != nil %>
-		<%= link_to metas_more_path(:post => params[:post], :page => metas['data']['previousPage']), :class => 'right btn btn-primary' do %>
-			<i class="icon-caret-left"></i>&nbsp;&nbsp;&nbsp;Previous page
-		<% end %>
+<% if metas["data"]["nextPage"] != nil %>
+	<%= link_to metas_more_path(:type => "likes", :post => post, :page => metas["data"]["nextPage"]), :class => 'btn btn-primary search_more_metas' do %>
+		<i class="icon-plus"></i>&nbsp;&nbsp;&nbsp;More likes
 	<% end %>
-</li>
-<li class="right next_page">
-	<% if metas['data']['nextPage'] != nil %>
-		<%= link_to metas_more_path(:post => params[:post], :page => metas['data']['nextPage']), :class => 'right btn btn-primary' do %>
-			Next page&nbsp;&nbsp;&nbsp;<i class="icon-caret-right"></i>
-		<% end %>
-	<% end %>
-</li>
+<% end %>

@@ -1,11 +1,14 @@
 require 'json'
 require 'curb'
-require 'nokogiri'
-require 'open-uri'
 
 class IndexController < ApplicationController
 
-  include ApplicationHelper
+	include ApplicationHelper
+
+	def initialize
+		@@c = curl_init
+		super
+	end
 
   	def change_session_size
 		session[:size] = params[:size]
@@ -28,19 +31,22 @@ class IndexController < ApplicationController
 	end
 
 	def index
-		if params[:item]
-			tag_number = params[:item].to_i
-			#tag_number = rand(0..@@trending_tags.length)
-			tag = @@trending_tags[tag_number]
-			tag = tag.strip[1..tag.length-1]
-
-			[Citivine::Application::config.vine_api_base_url+'timelines/tags/'+tag+'?page=1&size=1'].map do |url|
-		      @@c.url = url
-		      @@c.perform
-		      @feed = ActiveSupport::JSON.decode(@@c.body_str)
-		    end
-		    render :partial => "partials/index_bubble", :layout => false, formats: :html
-		end
+		feeds = Array.new;
+		[Citivine::Application::config.vine_api_base_url+"timelines/popular"].map do |url|
+      		@@c.url = url
+			@@c.perform
+			feeds = ActiveSupport::JSON.decode(@@c.body_str)
+			feeds["data"]["records"].each.with_index do |feed, index|
+				user_id = feed["userId"]
+				[Citivine::Application::config.vine_api_base_url+'timelines/users/'+user_id.to_s].map do |url|
+			      	@@c.url = url
+			    	@@c.perform
+				    posts = ActiveSupport::JSON.decode(@@c.body_str)
+			     	feed["post_count"] = posts["data"]["count"]
+			    end
+			end
+	    end
+	    @feeds = feeds
 	end
 
 	def about

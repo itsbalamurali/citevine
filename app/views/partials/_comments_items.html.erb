@@ -1,31 +1,24 @@
 <% metas["data"]["records"].each.with_index do |comment, index| %>
-	<li class="left content">
+	<li class="clearfix">
 		<div class="left">
-			<%= link_to user_path(:user => comment["userId"], :username => comment["username"]) do %>
-				<span><%= comment["username"] %></span>
-				<%= image_tag "#{comment["avatarUrl"]}", {alt:comment["username"], :height => 90, :width => 90} %>
-			<% end %>
+		<%= link_to user_path(:user => comment["userId"], :username => comment["username"]) do %>
+			<%= image_tag "#{comment["avatarUrl"]}", {alt:comment["username"], :height => 60, :width => 60} %>
+		<% end %>
 		</div>
-		<div class="left well comment_content">
-			<i class="icon-quote-left"></i>
-				<p><%= comment["comment"] %></p>
-			<i class="icon-quote-right"></i>
+		<div class="left comment_cont">
+			<p class="username">
+				<%= link_to user_path(:user => comment["userId"], :username => comment["username"]) do %>
+					<%= comment["username"] %>
+				<% end %>
+			</p>
+			<p class="comment">
+				<%= comment["comment"] %>
+			</p>
 		</div>
-		<div class="clear"></div>
 	</li>
 <% end %>
-<li class="clear"></li>
-<li class="left previous_page">
-	<% if metas['data']['previousPage'] != nil %>
-		<%= link_to metas_more_path(:post => params[:post], :page => metas['data']['previousPage']), :class => 'right btn btn-primary' do %>
-			<i class="icon-caret-left"></i>&nbsp;&nbsp;&nbsp;Previous page
-		<% end %>
+<% if metas["data"]["nextPage"] != nil %>
+	<%= link_to metas_more_path(:type => "comments", :post => post, :page => metas["data"]["nextPage"]), :class => 'btn btn-primary search_more_metas' do %>
+		<i class="icon-plus"></i>&nbsp;&nbsp;&nbsp;More comments
 	<% end %>
-</li>
-<li class="right next_page">
-	<% if metas['data']['nextPage'] != nil %>
-		<%= link_to metas_more_path(:post => params[:post], :page => metas['data']['nextPage']), :class => 'right btn btn-primary' do %>
-			Next page&nbsp;&nbsp;&nbsp;<i class="icon-caret-right"></i>
-		<% end %>
-	<% end %>
-</li>
+<% end %>

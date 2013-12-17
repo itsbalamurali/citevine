@@ -1,4 +1,5 @@
 body {
+	background: rgba(39,39,39,0.4);
 	h2 { 
 		font-size: 23px !important;
 		font-weight: 400;
@@ -6,39 +7,174 @@ body {
 		margin-top: 0px;
 		word-break: break-all;
 	}
-	.video_cont {
+	#post_cont {
+		margin: auto;
+		width: 540px;
 		h2 {
-			width: 600px;
+			word-break: initial;
 		}
 		.mute-button {
-			background-image: url(https://d3422saexnbpnl.cloudfront.net/static/images/volume.png);
-			bottom: 120px;
-			display: block;
-			height: 40px;
-			left: 30px;
-			position: absolute;
-			width: 40px;
-			z-index: 999;
-			&.on {
-				background-position: 0px 0px;
-			}
-			&.off {
-				background-position: 40px 0px;
-			}
+			margin-left: 20px;
+			margin-top: 480px;
 		}
 		.video-js {
+			background: transparent;
+			border: solid 2px #F7F7F7;
+			width: 100% !important;
+			.vjs-tech {
+				height: auto;
+				position: relative;
+				width: 100%;
+			}
 			.vjs-control-bar, .vjs-fade-out {
 				display: none !important;
 			}
 		}
-		.video_cont_infos {
+	}
+	#metas_cont {
+		margin: auto;
+		width: 600px;
+		.well {
+			h3 {
+				font-size: 18px !important;
+				line-height: 15px;
+				margin-top: 0;
+				vertical-align: top;
+				width: 77%;
+			}
+			div.user_posts {
+				margin-top: 30px;
+				a {
+					border: solid 1px #CFCFCE;
+					display: inline-block;
+					margin-bottom: 10px;
+					margin-right: 8px;
+					padding: 3px;
+				}
+			}
+			span {
+				width: 77%;
+			}
+			img.user_avatar {
+				margin-right: 10px;
+			}
+		}
+		.nav-tabs {
+			border-bottom: 0;
+			margin-bottom: 10px;
+		}
+		.nav-tabs>.active>a, .nav-tabs>.active>a:hover, .nav-tabs>.active>a:focus {
+			border-bottom-color: #DDD;
+			border-radius : 4px;
+		}
+		ul {
+			li {
+				list-style: none;
+				word-wrap: break-word;
+			}
+			h3 {
+				margin-bottom: 0;
+			}
+			input {
+				width: 80%;
+			}
+			&.metas {
+				background: #f7f7f7;
+				border: 1px solid #DDD;
+				display: none;
+				margin: 0px;
+				overflow: auto;
+				padding: 20px;
+				&#share {
+					display: block;
+					a {
+						margin-right: 10px;
+						&:hover {
+							text-decoration: none;
+						}
+						.icon-share {
+							border-radius: 50px;
+							color: #FFF;
+							display: inline-block;
+							font-size: 40px;
+							height: 50px;
+							padding-top: 10px;
+							text-align: center;
+							width: 60px;
+						}
+						.icon-twitter {
+							background: rgb(0, 185, 254);
+						}
+						.icon-facebook {
+							background: #3B5998;
+						}
+					}
+				}
+				&#comments {
+					margin-left: 0;
+					li {
+						border-bottom: dashed 1px #c0c0c0;
+						margin-bottom: 0;
+						padding: 10px 0px;
+						&:first-child {
+							padding-top: 0;
+						}
+						&:last-child {
+							border-bottom: 0;
+							padding-bottom: 0px;
+						}
+						div.comment_cont {
+							margin-left: 10px;
+							width: 84%;
+							a {
+							display: inline-block;
+							margin-right: 5px;
+							}
+
+							p {
+								&.username {
+									font-size: 80%;
+									margin-bottom: 1px;
+									margin-top: -5px;
+								}
+								&.comment {
+									color: #000;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	#video_cont {
+		&.white-popup {
+			background: #ececec;
+		  	position: relative;
+			margin: 20px auto;
+			max-width: 1170px;
+			padding: 20px;
+			width: auto;
+		}
+		h2 {
+			max-width: 1170px;
+		}
+		#post_cont {
+			height: 720px;
 			width: 600px;
+			.mute-button {
+				margin-top: 540px;
+			}
+		}
+		#metas_cont {
+			margin-left: 20px;
+			width: 550px;
 		}
 	}
 	#main {
 		margin-bottom: 40px;
 		div#content{
-			padding-top: 20px;
+			padding: 20px 0 40px 0;
 			> h2 {
 				margin: 40px 0 0;
 			}
@@ -117,9 +253,9 @@ body {
 							text-transform: uppercase;
 						}
 						.twitter-share-button {
-                                                    position: absolute;
-                                                    right: 0;
-                                                    top: 12px;
+                            position: absolute;
+                            right: 0;
+                            top: 12px;
 						}
 					}
 					.feed_infos {
