@@ -68295,4 +68295,9 @@ ActionController::RoutingError (No route matches [GET] "/apple-touch-icon-precom
   rack (1.4.5) lib/rack/content_length.rb:14:in `call'
   rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
   /usr/local/rvm/rubies/ruby-1.9.3-p429/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
-  /usr/local/rvm/rubies/ruby-1.9.3-p429/lib/ruby/1.9.1/webrick/httpserv
+  /usr/local/rvm/rubies/ruby-1.9.3-p429/lib/ruby/1.9.1/webrick/httpservConnecting to database specified by database.yml
+  [1m[36m (0.2ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (89.2ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (18.9ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (5.7ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Connecting to database specified by database.yml
